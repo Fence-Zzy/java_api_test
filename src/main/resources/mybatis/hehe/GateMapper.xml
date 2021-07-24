@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.java_api_test.web.dao.IGateMapper">
+
+	<resultMap type="Gate" id="GateResult">
+		<result property="sourceType"        column="sourceType"       />
+	</resultMap>
+	
+	<insert id="insertGate" useGeneratedKeys="true" keyProperty="id">
+        insert into gate(id, certificate_no, user_name, catch_time, iz_realname)
+        values
+        <foreach collection="list" item="it" separator=",">
+			(#{it.id}, #{it.certificateNo}, #{it.userName}, #{it.catchTime}, #{it.isRealName})
+		</foreach>
+	</insert>
+
+</mapper>
